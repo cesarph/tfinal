@@ -27,19 +27,24 @@ router.post('/', (req, res) => {
 
 });
 
-function parseJSON({ word_count, word_count_message, personality }) {
+function parseJSON({ word_count, word_count_message, personality, needs, values, consumption_preferences }) {
     
     return { 
         word_count, 
         word_count_message,
-        personality: personality.map(({ percentile, name, children }) => (
+        personality: personality.map(({ name, percentile, children }) => (
             {
                 name,
                 percentile,
-                children: children.map(( {name, percentile} ) => ({
-                    name, 
-                    percentile
-                }))
+                children: children.map(( {name, percentile} ) => ({name, percentile }))
+            }
+        )),
+        needs: needs.map(({ name, percentile }) => ({ name, percentile})),
+        values: values.map(({ name, percentile }) => ({ name, percentile })),
+        consumption_preferences: consumption_preferences.map(({ name, consumption_preferences }) => (
+            {
+                name,
+                consumption_preferences: consumption_preferences.map(( {name, score} ) => ({ name, score}))
             }
         ))
      }
