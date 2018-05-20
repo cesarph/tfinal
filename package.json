@@ -4,13 +4,19 @@
   "description": "Aplicación que usa los servicios de Watson",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cesarph/tfinal.git"
   },
-  "author": "César Palazuelos, Karen Gonzáles, Miguel Muñoz",
+  "authors": [
+    "César Palazuelos",
+    "Karen Gonzáles",
+    "Miguel Muñoz"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cesarph/tfinal/issues"
@@ -21,5 +27,9 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "watson-developer-cloud": "^3.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.17.4"
   }
 }
