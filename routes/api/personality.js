@@ -1,7 +1,6 @@
 const router = require('express').Router(),
       PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
-require('dotenv').config();
 
 const personalityInsights = new PersonalityInsightsV3({
   username: process.env.PERSONALITY_USER,
