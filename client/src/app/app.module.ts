@@ -1,4 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Http, HttpModule, JsonpModule, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Injectable } from '@angular/core';
@@ -7,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import { AppRoutingModule } from './/app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -38,11 +40,21 @@ export class NoopInterceptor implements HttpInterceptor {
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: null,
+      headerName: null
+    }),
   ],
   exports: [],
-  providers: [
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: NoopInterceptor,
+    multi: true,
+  },
   AppobservableService,
- 
   ],
   bootstrap: [AppComponent]
 })
