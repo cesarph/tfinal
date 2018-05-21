@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { InicioComponent } from './inicio/inicio.component';
+import {PersonalComponent} from './inicio/personal/personal.component';
+import {PostersComponent} from './inicio/posters/posters.component';
 
 
 
@@ -13,6 +15,16 @@ export const appRoutes: Routes = [
     path: '', 
     component: InicioComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'personal',
+    component: PersonalComponent,
+    data: { title: 'Personal' }
+  },
+  {
+    path: 'posters',
+    component: PostersComponent,
+    data: { title: 'posters' }
   },
   {
     "path": "**",

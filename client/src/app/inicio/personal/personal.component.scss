@@ -1,0 +1,32 @@
+header{
+    background: url(../../../assets/Personal/maxresdefault.jpg);
+    background-size: cover;
+    min-height: 500px;
+        
+    p{
+        color: white;
+        font-weight: bolder;
+        margin: auto;
+        font-size: 58px;
+    }
+    
+}
+.instrucciones{
+    padding: 50px 0;
+    p{
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+.butt{
+    width: 200px;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+}
+.hidden{
+    display: none;
+}
+.showans{
+    display: block;
+}
