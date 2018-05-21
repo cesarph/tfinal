@@ -37,21 +37,21 @@
           <form #pregunta="ngForm" (ngSubmit)="submitTestForm(pregunta)" *ngIf="!form_success">
             <div class="form-group text-left">
               <label for="q1">Que es lo que no te ha gustado de la carrera?</label>
-              <input type="text" class="form-control" id="q1" [(ngModel)]="preguntas.q1" name="q1" #pagina="ngModel">
+              <input type="text" class="form-control" id="q1" [(ngModel)]="preguntas.q1" name="q1" #q1="ngModel">
             </div>
             <div class="form-group text-left">
                 <label for="q2">Como te sientes con la decision que estas tomando?</label>
-                <input type="text" class="form-control" id="q2" [(ngModel)]="preguntas.q2" name="q2" #pagina="ngModel">
+                <input type="text" class="form-control" id="q2" [(ngModel)]="preguntas.q2" name="q2" #q2="ngModel">
               </div>
               <div class="form-group text-left">
                   <label for="q3">Nos puedes describir como has sentido tu desempeno en esta carrera</label>
-                  <input type="text" class="form-control" id="q3" [(ngModel)]="preguntas.q3" name="q3" #pagina="ngModel">
+                  <input type="text" class="form-control" id="q3" [(ngModel)]="preguntas.q3" name="q3" #q3="ngModel">
                 </div>
                 <div class="form-group text-left">
                     <label for="content">Necesitamos que te describas, que te gusta, no te gusta, como te ves en el futuro, a que problemas te has enfrentado a lo largo de
                       esta carrera, y en tu vida persona.(Aproximadamente 700 palabras.)
                     </label>
-                    <textarea rows="10" type="text" class="form-control" id="content" [(ngModel)]="preguntas.content" name="content" #pagina="ngModel">
+                    <textarea rows="10" type="text" class="form-control" id="content" [(ngModel)]="preguntas.content" name="content" #content="ngModel">
                       </textarea>
                   </div>
             <div class="form-group text-center">
@@ -64,6 +64,6 @@
     
   </section>
   <section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
-
+    <P>algooo</P>
   </section>
 </div>

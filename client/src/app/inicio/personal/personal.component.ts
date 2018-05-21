@@ -29,9 +29,9 @@ export class PersonalComponent implements OnInit {
 			const url = '/api/personality';
 			this.observableService.createService(url, this.preguntas)
 				.subscribe(result => {
-          this.form_success = (result == 'success' ) ? true : false;
+          this.form_success = result;
           this.resultper=result;
-          
+          console.log("entre");
 				},
 					error => { }
 				);
