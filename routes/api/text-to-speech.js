@@ -12,7 +12,7 @@ const textToSpeech = new TextToSpeechV1({
 router.post('/', (req, res) => {
     const params = {
         text: req.body.text,
-        voice: req.body.voice, 
+        voice: req.body.voice || 'es-ES_LauraVoice', 
         accept: 'audio/wav'
     };
 
