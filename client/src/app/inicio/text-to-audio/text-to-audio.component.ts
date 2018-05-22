@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppobservableService } from '../../services/appobservable.service';
 
 @Component({
   selector: 'app-text-to-audio',
@@ -11,9 +13,29 @@ export class TextToAudioComponent implements OnInit {
       "text": null,
   
   }
-  constructor() { }
+  public form_success = false;
+  public audio=null;
+  public values=null;
+  public needs=null;
+  public consumptions=null;
+
+  constructor(private observableService: AppobservableService) { }
 
   ngOnInit() {
   }
+submitTexttoForm(form: any) {
+		if (form.valid) {
+			console.log('valid');
+			const url = '/api/text-to-speech';
+			this.observableService.createService(url, this.texttoau)
+				.subscribe(result => {
+          this.form_success = result;
+				},
+					error => { }
+				);
+		} else {
+			console.log('invalid');
+		}
+	}
 
 }

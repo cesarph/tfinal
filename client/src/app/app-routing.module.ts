@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import {PersonalComponent} from './inicio/personal/personal.component';
 import {PostersComponent} from './inicio/posters/posters.component';
+import {TextToAudioComponent} from './inicio/text-to-audio/text-to-audio.component';
+
 
 
 
@@ -15,6 +17,11 @@ export const appRoutes: Routes = [
     path: '', 
     component: InicioComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'text-to-audio',
+    component: TextToAudioComponent,
+    data: { title: 'TextAudio' }
   },
   {
     path: 'personal',
