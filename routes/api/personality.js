@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
           res.status(200).json(parseJSON(watsonResp));
         }
     );
-S
+
 });
 
 
