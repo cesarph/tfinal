@@ -1,3 +1,33 @@
-<p>
-  text-to-audio works!
-</p>
+<div class="container-fluid">
+  <header>
+    <div class="row">
+      <div class="col-md-12 text-center pt-5">
+        <div class="hed">
+          <p>Test de Personalidad</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="texto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <form #pregunta="ngForm" (ngSubmit)="submitTexttoForm(pregunta)" *ngIf="!form_success">
+                <div class="form-group text-left">
+                    <label for="text">
+                    </label>
+                    <textarea rows="10" type="text" class="form-control" id="text" [(ngModel)]="texttoau.text" name="content" #content="ngModel">
+                      </textarea>
+                  </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="audio">
+
+  </section>
+</div>
