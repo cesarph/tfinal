@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Request, RequestOptions, Response, XHRBackend } from '@angular/http';
-
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as Rx from 'rxjs';
 import { environment } from '../../environments/environment';
 
-// we can now access environment.apiUrl
+
 const API_URL = environment.apiUrl;
 
 import 'rxjs/add/observable/of';
@@ -30,16 +29,25 @@ export class AppobservableService {
   
    }
 
+   chekheaders(): void {
+    this.headers = null;
+   
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
 
-  createService(url: string, param: any, ishome?: boolean): Observable<any> {
-    
+    this.options = new RequestOptions({ headers: this.headers });
+  }
+
+  createService(url: string, param: any): Observable<any> {
+    this.chekheaders();
+
     let body = JSON.stringify(param);
+    console.log(this.options);
     console.log(this.apiUrl+url)
     return this.http  
         .post(this.apiUrl + url, body, this.options)
         .map(data => {
-          console.log(data)
-         return data
+          console.log(data.json() || {});
+          return data.json();
         })
       
         

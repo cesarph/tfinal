@@ -10,7 +10,7 @@ const personalityInsights = new PersonalityInsightsV3({
 });
 
 router.post('/', (req, res) => {
-    
+    console.log(req.body);
     personalityInsights.profile({
           content: req.body.content,
           content_type: 'text/plain',
@@ -18,13 +18,14 @@ router.post('/', (req, res) => {
           accept_language: 'es', 
           consumption_preferences: true
         }, (err, watsonResp) => {
-          if (err) return console.log('error:', err);
-          
-          res.json(parseJSON(watsonResp));
+          if (err) return console.log(err);
+
+          res.status(200).json(parseJSON(watsonResp));
         }
     );
 
 });
+
 
 function parseJSON({ word_count, word_count_message, personality, needs, values, consumption_preferences }) {
     
@@ -34,19 +35,23 @@ function parseJSON({ word_count, word_count_message, personality, needs, values,
         personality: personality.map(({ name, percentile, children }) => (
             {
                 name,
-                percentile,
-                children: children.map(( {name, percentile} ) => ({name, percentile }))
+                percentile: (percentile*100).toFixed(1) ,
+                children: children.map(( {name, percentile} ) => ({ name, percentile: (percentile*100).toFixed(1) }))
             }
         )),
-        needs: needs.map(({ name, percentile }) => ({ name, percentile})),
-        values: values.map(({ name, percentile }) => ({ name, percentile })),
+        needs: needs.map(({ name, percentile }) => ({ name, percentile: (percentile*100).toFixed(1)})),
+        values: values.map(({ name, percentile }) => ({ name, percentile: (percentile*100).toFixed(1) })),
         consumption_preferences: consumption_preferences.map(({ name, consumption_preferences }) => (
             {
-                name,
-                consumption_preferences: consumption_preferences.map(( {name, score} ) => ({ name, score}))
+                name: name,
+                consumption_preferences: consumption_preferences.filter(cons => cons.score != 0).map(
+                    ({name, score}) => ({name, score})
+                )
             }
-        ))
+        )).filter(cons => cons.consumption_preferences != "")
      }
 }
+
+
 
 module.exports = router;

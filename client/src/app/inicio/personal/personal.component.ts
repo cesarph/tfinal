@@ -10,8 +10,11 @@ import { AppobservableService } from '../../services/appobservable.service';
 export class PersonalComponent implements OnInit {
 
   public form_success = false;
-  public resultper=null;
-  public preguntas = 
+  public personality=null;
+  public values=null;
+  public needs=null;
+  public consumptions=null;
+  public preguntass = 
   {
       "content": null,
       "q1":null,
@@ -27,11 +30,13 @@ export class PersonalComponent implements OnInit {
 		if (form.valid) {
 			console.log('valid');
 			const url = '/api/personality';
-			this.observableService.createService(url, this.preguntas)
+			this.observableService.createService(url, this.preguntass)
 				.subscribe(result => {
           this.form_success = result;
-          this.resultper=result;
-          console.log("entre");
+          this.personality = result.personality;
+          this.needs = result.needs;
+          this.values = result.values;
+          this.consumptions = result.consumption_preferences;
 				},
 					error => { }
 				);

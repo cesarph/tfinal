@@ -28,6 +28,7 @@ export class NoopInterceptor implements HttpInterceptor {
   }
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,3 +64,4 @@ export class NoopInterceptor implements HttpInterceptor {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
