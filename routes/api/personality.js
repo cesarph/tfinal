@@ -10,9 +10,10 @@ const personalityInsights = new PersonalityInsightsV3({
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body);
+    const message = `${req.body.content} lo que no ha gustado en la carrera es ${req.body.q1}. ${req.body.q2}. Mi desempeño en la carrera ha sido ${req.body.q3}`;
+
     personalityInsights.profile({
-          content: req.body.content,
+          content: message,
           content_type: 'text/plain',
           content_language: 'es',
           accept_language: 'es', 
@@ -43,15 +44,24 @@ function parseJSON({ word_count, word_count_message, personality, needs, values,
         values: values.map(({ name, percentile }) => ({ name, percentile: (percentile*100).toFixed(1) })),
         consumption_preferences: consumption_preferences.map(({ name, consumption_preferences }) => (
             {
-                name: name,
+                name,
                 consumption_preferences: consumption_preferences.filter(cons => cons.score != 0).map(
-                    ({name, score}) => ({name, score})
+                    ({name, score}) => ({name: parseName(name), score})
                 )
             }
         )).filter(cons => cons.consumption_preferences != "")
      }
 }
 
+function parseName(name) {
+    name = name.slice(16, name.legth);
+    const bannedSentences = ["les gusten las ", "le gusten las ", "prefiera la ", "le guste la ", "la guste la ", "le guste el ","le gusten las ", "le influya las ", "le influya la ", "le influyan las ", "prefiera el ",  "" ];
+
+    return bannedSentences.map(sentence =>  
+        (name.match(sentence)) ? name.slice(sentence.length, name.length) : "")
+        .filter(val => val != "")[0];
+}  
+    
 
 
 module.exports = router;
