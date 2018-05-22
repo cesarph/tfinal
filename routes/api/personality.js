@@ -19,12 +19,12 @@ router.post('/', (req, res) => {
           accept_language: 'es', 
           consumption_preferences: true
         }, (err, watsonResp) => {
-          if (err) return console.log(err);
-
+          if (err) return res.status(400).json({"error": "El Texto debe de tener al menos 100 palabras, lo recomendable son 100"});
+ 
           res.status(200).json(parseJSON(watsonResp));
         }
     );
-
+S
 });
 
 
