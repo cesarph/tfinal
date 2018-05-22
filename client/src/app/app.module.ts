@@ -9,6 +9,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -40,6 +41,7 @@ export class NoopInterceptor implements HttpInterceptor {
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
+    SimpleNotificationsModule.forRoot(),
     FormsModule,
     HttpModule,
     HttpClientModule,
