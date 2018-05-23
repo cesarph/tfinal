@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextToAudioComponent } from './text-to-audio.component';
+import { TranslatorComponent } from './translator.component';
 
-describe('TextToAudioComponent', () => {
-  let component: TextToAudioComponent;
-  let fixture: ComponentFixture<TextToAudioComponent>;
+describe('TranslatorComponent', () => {
+  let component: TranslatorComponent;
+  let fixture: ComponentFixture<TranslatorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextToAudioComponent ]
+      declarations: [ TranslatorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextToAudioComponent);
+    fixture = TestBed.createComponent(TranslatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

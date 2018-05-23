@@ -22,7 +22,8 @@ import { PostersComponent } from './inicio/posters/posters.component';
 import { AreasComponent } from './inicio/areas/areas.component';
 import { AppobservableService } from './services/appobservable.service';
 import { TextToAudioComponent } from './inicio/text-to-audio/text-to-audio.component';
-import { ChatbotComponent } from './inicio/chatbot/chatbot.component'
+import { ChatbotComponent } from './inicio/chatbot/chatbot.component';
+import { TranslatorComponent } from './inicio/translator/translator.component'
 
 @Injectable()
 export class NoopInterceptor implements HttpInterceptor {
@@ -42,7 +43,8 @@ export class NoopInterceptor implements HttpInterceptor {
     PostersComponent,
     AreasComponent,
     TextToAudioComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    TranslatorComponent
   ],
   imports: [
     BrowserModule,
