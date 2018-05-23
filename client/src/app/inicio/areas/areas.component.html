@@ -1,25 +1,46 @@
 <div class="content-fluid">
-  <header>
-
+  <header class="text-center">
+    <p >Areas de Comida </p>
   </header>
-<div class="row">
-  <div class="container">
-        <form #area="ngForm" (ngSubmit)="submitImage(area)" *ngIf="!form_success">
+  <section class="container row">
+    <div class="col-md-12 mrgn-top-50" (ngSubmit)="submitImage(area)" *ngIf="!form_success">
+      <h2>
+        Esta seccion ha sido creada con la finalidad de poder ayudar a los alumnos a saber si una imagen pertenece o no a las zonas
+        de comida dentro de la anahuac.
+      </h2>
+      <h4>Checa que la URL de la imagen termine en .jpg,.png, etc.</h4>
+    </div>
+  </section>
+  <section>
+      <form #area="ngForm" (ngSubmit)="submitImage(area)" *ngIf="!form_success">
+        
+    <div class=" container row mrgn-top-50 ">
+        <div class="col-md-12">
+        
           <div class="form-group text-left">
             <label for="url">Ingrese URL de la Imagen</label>
-            <input type="text" class="form-control" id="url" [(ngModel)]="areas.url" name="url" #url="ngModel">
+            <input type="text" class="form-control" id="url" [(ngModel)]="areas.url" name="url" #url="ngModel" class="inputtt">
           </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group text-center">
+          <button type="submit" class="btn  butt">Enviar</button>
+        </div>
+      </div>
+    </div>
+      </form>
+  </section>
+  <section class="container row resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
+    <div class="col-md-12">
+      
+      <div *ngFor="let object of objects;">
+          <h2>Resultado de tu busqueda:</h2>
+        <h3>Areas: {{ object }}</h3>
           
-          <div class="form-group text-center">
-            <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
-          </div>
-        </form>
-        <section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
-          <div *ngFor="let object of objects;">
-            <img src="{{ this.areas.url }}" alt="">
-            Areas: {{ object }}
-          </div>
-        </section>
-  </div>
-</div>
+        <img src="{{ this.areas.url }}" alt="">
+        
+      </div>
+      <button class="btn btn-primary" (click)="refresh()">Buscar otra imagen</button>
+    </div>
+    </section>
 </div>

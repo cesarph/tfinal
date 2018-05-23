@@ -8,6 +8,7 @@ header{
         font-weight: bolder;
         margin: auto;
         font-size: 58px;
+        padding-top: 70px;
     }
     
 }
@@ -24,4 +25,14 @@ header{
     width: 100%;
     border-radius: 25px;
     border: 1px solid gray;
+}
+.resultado{
+    padding-bottom: 70px;
+    margin-top: 50px;
+}
+.hidden{
+    display: none;
+}
+.showans{
+    display: block;
 }

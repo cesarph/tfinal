@@ -1,7 +1,14 @@
 header{
     background: url("../../../assets/Home/ana.jpg") no-repeat;
     background-size: cover;
-    min-height: 746px;
+	min-height: 746px;
+	p{
+        color: white;
+        font-weight: bolder;
+        margin: auto;
+        font-size: 58px;
+        padding-top: 70px;
+    }
 }
 .posters,
 .pendones{
