@@ -8,6 +8,7 @@ import {PersonalComponent} from './inicio/personal/personal.component';
 import {PostersComponent} from './inicio/posters/posters.component';
 import {TextToAudioComponent} from './inicio/text-to-audio/text-to-audio.component';
 import { AreasComponent } from './inicio/areas/areas.component';
+import { ChatbotComponent } from './inicio/chatbot/chatbot.component';
 
 
 
@@ -39,6 +40,11 @@ export const appRoutes: Routes = [
     path: 'posters',
     component: PostersComponent,
     data: { title: 'posters' }
+  },
+  {
+    path: 'chatbot',
+    component: ChatbotComponent,
+    data: { title: 'chatbot' }
   },
   {
     "path": "**",
