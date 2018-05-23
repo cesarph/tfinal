@@ -30,12 +30,13 @@
             width: 30%;
             
           border: 1px solid gray;
-          background-color: gray;
+          background-color: #e0eeee;
           
           .resultadopreg {
               .pregt{
                 background-color: #FF7500;
-              color: black;
+                font-weight: bold;
+                color: black;
               }
             .preg {
             text-align: right;
@@ -95,7 +96,7 @@
     position: relative;
     left: 0px;
     top: 1px;
-    width: 29%;
+    width: 30%;
     height: 37px;
   }
   .form-wrapper input {

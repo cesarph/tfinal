@@ -18,9 +18,7 @@ export class ChatbotComponent implements OnInit {
   {
       "message": null,  
   }
-
   constructor(private observableService: AppobservableService) { }
-
   ngOnInit() {
     const url = '/api/chatbot';
     this.observableService.createService(url, {"message": ""})
@@ -30,7 +28,6 @@ export class ChatbotComponent implements OnInit {
 					error => { }
 				);
   }
-
   submitMessage(form: any) {
 		if (form.valid) {
 			console.log('valid');
