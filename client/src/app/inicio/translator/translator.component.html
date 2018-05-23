@@ -3,16 +3,16 @@
       <div class="row">
         <div class="col-md-12 text-center pt-5">
           <div class="hed">
-            <p>Texto a Voz</p>
+            <p>Traductor</p>
           </div>
         </div>
       </div>
     </header>
-    <section class="texto">
-      <div class="container">
-        <div class="row">
+    <section class="texto container row mrgn-top-50">
           <div class="col-md-12">
+           
             <form #pregunta="ngForm" (ngSubmit)="submitTexttoForm(pregunta)" *ngIf="!form_success">
+                <h3>Traduce tu texto cuando quieras.</h3>
               <div class="form-group">
                 <select id="" [(ngModel)]="translate.language" name="language" #language="ngModel">
                   <option value="es-en" >Traducir Español a Inglés </option>
@@ -20,7 +20,7 @@
                 </select>
               </div>
               <div class="form-group text-left">
-                  <label for="text">Ingresa el texto que quieras escuchar, esto en apoyo a personas con capacidades diferentes.
+                  <label for="text">Ingresa el texto que quieras traducir, asi sera mas facil que te entiendas con los alumnos de intercambio cuando no conoces el idioma.
                   </label>
                   <textarea rows="10" type="text" class="form-control" id="text" [(ngModel)]="translate.text" name="text" #text="ngModel">
                     </textarea>
@@ -29,13 +29,14 @@
                   <button type="submit" class="btn btn-outline-primary butt">Traducir</button>
                 </div>
             </form>
-          </div>
-        </div>
       </div>
-    </section>
-    <section class="resultado" [ngClass]="{ 'showans': form_success, 'hidden': !form_success }" *ngIf="form_success"> 
+    </section >
+    <section class="resultado row container margin-btn-50" [ngClass]="{ 'showans': form_success, 'hidden': !form_success }" *ngIf="form_success"> 
+      <div class="col-md-12">
+      <h4>Resultado de la traducción</h4>
       <p id="valor">{{this.translation}}</p>
-      
+      <button class="btn btn-primary " (click)="refresh()">Atras</button>
+    </div>
     </section>
     
   

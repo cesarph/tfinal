@@ -22,7 +22,9 @@ export class TranslatorComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  refresh(): void {
+    window.location.reload();
+}
   submitTexttoForm(form: any) {
     if (form.valid) {
       console.log('valid');
