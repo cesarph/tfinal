@@ -4,7 +4,8 @@
   <div class="inchat">
     <div class="chatb pre-scrollable" [ngClass]="{'showans': showchat, 'hidden': !showchat}">
     <div class="resultadopreg">
-        <p class="preg">{{ this.initialMessage }}</p>
+        <!-- <p class="preg">{{ this.initialMessage }}</p>
+        <br> -->
       <div *ngFor="let message of this.messages;" class="row">
         <div class="col-md-6 offset-md-6 res">
         <p class="preg"> {{ message.question }}</p>
