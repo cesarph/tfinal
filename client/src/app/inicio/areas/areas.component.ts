@@ -19,6 +19,9 @@ export class AreasComponent implements OnInit {
 
     ngOnInit() {
     }
+    refresh(): void {
+        window.location.reload();
+    }
 
     submitImage(form: any) {
         if (form.valid) {

@@ -26,6 +26,9 @@ export class PersonalComponent implements OnInit {
 
   ngOnInit() {
   }
+  refresh(): void {
+    window.location.reload();
+}
   submitTestForm(form: any) {
 		if (form.valid) {
 			console.log('valid');

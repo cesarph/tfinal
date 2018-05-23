@@ -8,6 +8,31 @@ header{
         font-weight: bolder;
         margin: auto;
         font-size: 58px;
+        padding-top: 70px;
     }
     
+}
+.mrgn-top-50{
+    margin-top: 50px;
+}
+.btn{
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    width: 250px;
+}
+.inputtt{
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid gray;
+}
+.resultado{
+    padding-bottom: 70px;
+    margin-top: 50px;
+}
+.hidden{
+    display: none;
+}
+.showans{
+    display: block;
 }

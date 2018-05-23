@@ -1,7 +1,14 @@
 header{
     background: url("../../../assets/Home/ana.jpg") no-repeat;
     background-size: cover;
-    min-height: 746px;
+	min-height: 746px;
+	p{
+        color: white;
+        font-weight: bolder;
+        margin: auto;
+        font-size: 58px;
+        padding-top: 70px;
+    }
 }
 .posters,
 .pendones{
@@ -83,11 +90,14 @@ h3,
 
 
 .resultados{
-	background-color: #FF7500;
-	color: black;
+	background-color: black;
+	color: #FF7500;
 	padding: 50px 0;
 	h2,p{
 		text-align: center;
 	}
 	
+}
+.margin-top-20{
+	margin-top: 20px;
 }

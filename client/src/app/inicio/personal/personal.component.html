@@ -40,20 +40,20 @@
               <input type="text" class="form-control" id="q1" [(ngModel)]="preguntass.q1" name="q1" #q1="ngModel">
             </div>
             <div class="form-group text-left">
-                <label for="q2">Como te sientes con la decision que estas tomando?</label>
-                <input type="text" class="form-control" id="q2" [(ngModel)]="preguntass.q2" name="q2" #q2="ngModel">
-              </div>
-              <div class="form-group text-left">
-                  <label for="q3">Nos puedes describir como has sentido tu desempeno en esta carrera</label>
-                  <input type="text" class="form-control" id="q3" [(ngModel)]="preguntass.q3" name="q3" #q3="ngModel">
-                </div>
-                <div class="form-group text-left">
-                    <label for="content">Necesitamos que te describas, que te gusta, no te gusta, como te ves en el futuro, a que problemas te has enfrentado a lo largo de
-                      esta carrera, y en tu vida persona.(Aproximadamente 700 palabras.)
-                    </label>
-                    <textarea rows="10" type="text" class="form-control" id="content" [(ngModel)]="preguntass.content" name="content" #content="ngModel">
-                      </textarea>
-                  </div>
+              <label for="q2">Como te sientes con la decision que estas tomando?</label>
+              <input type="text" class="form-control" id="q2" [(ngModel)]="preguntass.q2" name="q2" #q2="ngModel">
+            </div>
+            <div class="form-group text-left">
+              <label for="q3">Nos puedes describir como has sentido tu desempeno en esta carrera</label>
+              <input type="text" class="form-control" id="q3" [(ngModel)]="preguntass.q3" name="q3" #q3="ngModel">
+            </div>
+            <div class="form-group text-left">
+              <label for="content">Necesitamos que te describas, que te gusta, no te gusta, como te ves en el futuro, a que problemas te has enfrentado
+                a lo largo de esta carrera, y en tu vida persona.(Aproximadamente 700 palabras.)
+              </label>
+              <textarea rows="10" type="text" class="form-control" id="content" [(ngModel)]="preguntass.content" name="content" #content="ngModel">
+              </textarea>
+            </div>
             <div class="form-group text-center">
               <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
             </div>
@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    
+
   </section>
   <section class="instrucciones container" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
     <div class="row">
@@ -69,49 +69,65 @@
         <p>
           Resultados de tu información, esto es un aproximado a lo que te gusta o puede gustar segun el escrito enviado.
         </p>
-       
+
       </div>
     </div>
 
   </section>
-  <section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
-    <div class="container">
-   <div class="row">
-     <div class="col-4 col-md-4">
-   <h4>Personalidad:</h4> 
-    <div *ngFor="let pers of personality;">
-      <strong>{{ pers.name }} - {{ pers.percentile }}:</strong><br>
-      <span *ngFor="let res of pers.children;">
-          {{ res.name }} - {{ res.percentile }}%,
-      </span>
-    </div>
-  </div>
-    <div class="col-md-4 col-4">
-      <h4>Needs</h4>
-      <div *ngFor="let need of needs;">
-          <strong>{{ need.name }}</strong> - {{ need.percentile }}%
-      </div>
-    </div>
-   <div class="col-md-4 col-4">
-    <h4>Values</h4>
-    <div *ngFor="let value of values;">
-        <strong>{{ value.name }}</strong> - {{ value.percentile }}%
-    </div>
-   </div>
-   <div class="col-12 col-md-12">
-    <h2 class="text-center">
-    Preferencias de consumo</h2>
+  <section class="row resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
+      <div class="row">
+          <div class="container row">
+            <div class="col-md-6  col-4 personhov">
+              <h4 class="margin-top-20">Needs</h4>
+              <div *ngFor="let need of needs;">
+                <strong>{{ need.name }}</strong> - {{ need.percentile }}%
+                <input type="range" min="10" max="100" value="{{ need.percentile }}" class="slider2" disabled="true">
+              </div>
+            </div>
+            <div class="col-md-4 col-4">
+              <h4>Values</h4>
+              <div *ngFor="let value of values;">
+                <strong>{{ value.name }}</strong> - {{ value.percentile }}%
+                <input type="range" min="10" max="100" value="{{ value.percentile }}" class="slider2 " disabled="true">
+              </div>
+            </div>
+          </div>
+        </div>
     <div class="row">
-    <div  class="col-md-4" *ngFor="let consumption of consumptions;">
-        <strong>{{ consumption.name }}: </strong>
-        <ul *ngFor="let preference of consumption.consumption_preferences;">
-            <li>{{ preference.name }} </li>
-        </ul>
-    
+      <div class="col-12 offset-md-1 col-md-11">
+        <h4>Personalidad:</h4>
+        <div class="row">
+          <div *ngFor="let pers of personality;" class="col-5 col-md-6 personhov">
+            <h4 class="margin-top-20">{{ pers.name }} {{ pers.percentile }}%:</h4>
+            <br>
+            <span *ngFor="let res of pers.children;">
+              {{ res.name }} - {{ res.percentile }}%,
+              <br>
+              <input type="range" min="10" max="100" value="{{ res.percentile }}" class="slider" disabled="true">
+              <br>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-   </div>
-   </div>
-  </div>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2  ">
+        <h2 class="margin-top-20 ">
+          Preferencias de consumo</h2>
+        <div class="row">
+          <div class="col-md-12 personhov" *ngFor="let consumption of consumptions;">
+            <h4 class="margin-top-20">{{ consumption.name }}: </h4>
+            <div *ngFor="let preference of consumption.consumption_preferences;">
+             <p class="prefcon">{{ preference.name }}</p> 
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <button class="btn btn-primary margin-top-20 mrgn-btn-50" (click)="refresh()">Atras</button>
+    </div>
+    
   </section>
 </div>

@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as Rx from 'rxjs';
 import { environment } from '../../environments/environment';
+ 
 
 
 const API_URL = environment.apiUrl;
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable({
@@ -19,37 +21,38 @@ import 'rxjs/add/operator/switchMap';
 export class AppobservableService {
   headers: Headers;
   options: RequestOptions;
-  apiUrl= API_URL;
+  apiUrl = API_URL;
 
   constructor(private http: Http,
     private router: Router,
     private notification: SimpleNotificationsModule) {
-      this.headers = new Headers({ 'Content-Type': 'application/json' });
-      this.options = new RequestOptions({ headers: this.headers });
-  
-   }
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
 
-   chekheaders(): void {
+  }
+
+  chekheaders(): void {
     this.headers = null;
-   
+
     this.headers = new Headers({ 'Content-Type': 'application/json' });
 
     this.options = new RequestOptions({ headers: this.headers });
   }
 
   createService(url: string, param: any): Observable<any> {
+  
     this.chekheaders();
-
     let body = JSON.stringify(param);
     console.log(this.options);
-    console.log(this.apiUrl+url)
-    return this.http  
-        .post(this.apiUrl + url, body, this.options)
-        .map(data => {
-          console.log(data.json() || {});
-          return data.json();
-        })
-      
+    console.log(this.apiUrl + url)
+    return this.http
+      .post(this.apiUrl + url, body, this.options)
+      .map(data => {
+        console.log(data.json() || {});
+        return data.json();
         
-}
+      });
+      
+  }
+  
 }

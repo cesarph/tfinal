@@ -1,16 +1,28 @@
-<section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
-    {{ this.initialMessage }}
-    <div *ngFor="let message of this.messages;">
-       Pregunta: {{ message.question }}<br>
-       Respuesta: {{ message.response }}
+<div class="fixed-bottom contchatt">
+  <i class="fa fa-times" (click)="showchat=false"  [ngClass]="{'showans': showchat, 'hidden': !showchat}"></i>
+  <button class="btn btn-outline-primary chatbut" (click)="showchat=true" [ngClass]="{'showans': !showchat, 'hidden': showchat}">Chatea con Nosotros</button>
+  <div class="inchat">
+    <div class="chatb pre-scrollable" [ngClass]="{'showans': showchat, 'hidden': !showchat}">
+    <div class="resultadopreg">
+        <p class="preg">{{ this.initialMessage }}</p>
+      <div *ngFor="let message of this.messages;" class="row">
+        <div class="col-md-6 offset-md-6 res">
+        <p class="preg"> {{ message.question }}</p>
+        </div>
+        <div class="col-md-6 pregt">
+        <p class="resp">{{ message.response }}</p>
+      </div>
+      </div>
     </div>
-</section>
-<form #chat="ngForm" (ngSubmit)="submitMessage(chat)" >
-    <div class="form-group text-left">
-      <input type="text" class="form-control" id="message" [(ngModel)]="question.message" name="message" #message="ngModel" placeholder="Pregunta">
-    </div>
-   
-    <div class="form-group text-center">
-      <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
-    </div>
-</form>
+    <div id="searchbar">
+              <form #chat="ngForm" (ngSubmit)="submitMessage(chat)" class="form-wrapper">
+                  <div class="input-wrapper text-left">
+                    <input type="text" class="form-control" id="message" [(ngModel)]="question.message" name="message" #message="ngModel" placeholder="Pregunta">
+                    <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
+                  </div>
+                </form>
+      </div>
+    
+  </div>
+</div>
+</div>
