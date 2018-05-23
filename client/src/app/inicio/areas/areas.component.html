@@ -4,12 +4,22 @@
   </header>
 <div class="row">
   <div class="container">
-      <image-upload buttonCaption="Cargar imagenes" dropBoxMessage="Puedes hacer Drag & Drop"
-      
-      ></image-upload>
-      <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
-<button type="button" (click)="upload()">Upload</button>
-
+        <form #area="ngForm" (ngSubmit)="submitImage(area)" *ngIf="!form_success">
+          <div class="form-group text-left">
+            <label for="url">Ingrese URL de la Imagen</label>
+            <input type="text" class="form-control" id="url" [(ngModel)]="areas.url" name="url" #url="ngModel">
+          </div>
+          
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
+          </div>
+        </form>
+        <section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
+          <div *ngFor="let object of objects;">
+            <img src="{{ this.areas.url }}" alt="">
+            Areas: {{ object }}
+          </div>
+        </section>
   </div>
 </div>
 </div>
