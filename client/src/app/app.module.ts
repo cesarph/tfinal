@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
+
 import { AppRoutingModule } from './/app-routing.module';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleNotificationsModule } from 'angular2-notifications';

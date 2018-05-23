@@ -5,3 +5,20 @@
     margin: 0 auto;
     max-width: 960px;
   }
+  .la-ball-clip-rotate-multiple.la-3x {
+    width: 0px !important;
+    > div {
+      &:first-child {
+        width: 60px !important;
+        height: 60px !important;
+      }
+      &:nth-child(2) {
+        width: 24px !important;
+        height: 24px !important;
+      }
+      &:last-child {
+        width: 44px !important;
+        height: 44px !important;
+      }
+    }
+  }

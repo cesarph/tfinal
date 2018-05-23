@@ -1,0 +1,135 @@
+
+.hidden {
+  display: none;
+}
+
+.showans {
+  display: block;
+}
+.contchatt{
+    .inchat{
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 10px;
+        .chatb.hidden{
+            touch-action: none;
+             transform: translate(0px, 0px);
+            opacity: 0;
+            visibility: hidden;
+        }
+        .res,.pregt{
+            border-radius: 25px;
+        }
+        .chatb {
+            padding: 10px;
+            height: 240pt;
+            position: relative;
+            flex-grow: 1;
+            width: 30%;
+            
+          border: 1px solid gray;
+          background-color: gray;
+          
+          .resultadopreg {
+              .pregt{
+                background-color: #FF7500;
+              color: black;
+              }
+            .preg {
+            text-align: right;
+              padding: 20px 10px;
+              float: left;
+              border-radius: 1.4em;
+                margin-bottom: 10px;
+                padding: 0.5em 0.8em;
+            }
+            .res{
+                background-color: black;
+              color: white;
+            }
+            .resp {
+              border-radius: 1.4em;
+                margin-bottom: 10px;
+                padding: 0.5em 0.8em;
+              text-align: left;
+              float: right;
+            }
+          }
+        }
+    }
+
+    .chatbut{
+        bottom: 5vmin;
+        left: 5vmin;
+        position: fixed;
+        z-index: 1;
+        }
+        
+
+}
+.fa-times{
+    color: red;
+    font-weight: bold;
+}
+#searchbar {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .input-wrapper {
+    position: relative;
+    right: 110px;
+    left: 10px;
+    top: 0px;
+    bottom: 0px;
+  }
+  /* Form wrapper styling */
+  
+  .form-wrapper {
+    position: relative;
+    left: 0px;
+    top: 1px;
+    width: 29%;
+    height: 37px;
+  }
+  .form-wrapper input {
+    height: 100%;
+    width: 100%;
+    padding: 8px 10px;
+    float: left;
+    color: #1f1f9d;
+    border: 0;
+    background: #e6e6e6;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+  }
+  /* Form submit button */
+  
+  .form-wrapper button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    overflow: visible;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 37px;
+    width: 104px;
+    color: #ffffff;
+    background: red;
+  }
+  .form-wrapper button::-moz-focus-inner {
+    /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+  }

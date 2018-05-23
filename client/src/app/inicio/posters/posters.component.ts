@@ -11,6 +11,7 @@ export class PostersComponent implements OnInit {
   public showindex = 0;
   public number_success=null;
   public people = null;
+  public id = 1;
   public objects = null;
   public numbermodal=0;
   constructor(private observableService: AppobservableService) { 
@@ -30,17 +31,23 @@ export class PostersComponent implements OnInit {
       this.showindex = index;
     }
   }
+  refresh(): void {
+    window.location.reload();
+}
   submitimage(number: number) {
-      const url = '/api/vr-poster/'+number;
+      const url = '/api/visual-recognition/poster/'+number;
       this.numbermodal=number;
       console.log(this.numbermodal);
 			this.observableService.createService(url, {})
 				.subscribe(result => {
+          console.log(result);
           this.number_success = result;
           this.people = result.people;
           this.objects = result.objects; 
+          this.id = result.id;
 				},
 					error => { }
 				);
-		} 
+    } 
+   
 }
