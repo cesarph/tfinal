@@ -19,7 +19,7 @@ export class AreasComponent implements OnInit {
   }
 
   upload() {
-    this.makeFileRequest("http://localhost:3000/upload", [], this.filesToUpload).then((result) => {
+    this.makeFileRequest("/api/visual-recognition/food", [], this.filesToUpload).then((result) => {
         console.log(result);
     }, (error) => {
         console.error(error);
