@@ -1,8 +1,10 @@
+
 <div class="container-fluid">
+ 
   <header>
 
   </header>
-  <section class="row promo">
+  <section class="row promo" *ngIf="!number_success">
     <div class="col-md-6 ">
       <div class="promo-item item-1 " (click)="showpst = true">
         <h2>
@@ -21,179 +23,175 @@
   <section class="row resultados " [ngClass]="{'div-open': number_success , 'div-close': !number_success}">
       <div class="container">
         <h2>Resultados</h2>
-        <p>Las respuestas pueden tardar un poco en cargar</p>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
+              <img src="../../../assets/postersypendones/{{number_success.id}}.jpg" class="img-fluid">
+          </div>
+          <div class="col-md-4">
             <strong>Cantidad de personas:</strong>
             <br>
             <div *ngFor="let person of people;">
               {{ person.gender }} entre {{ person.age.min }} y {{ person.age.max }}
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <strong>Que pueden pertenecer a:</strong>
 
             <div *ngFor="let object of objects;">
               {{ object }}
             </div>
           </div>
+          <button class="btn btn-primary margin-top-20" (click)="refresh()">Atras</button>
         </div>
       </div>
     </section>
-  <section class="posters" [ngClass]="{'div-open': showpst && !number_success, 'div-close': !showpst && number_success !=null }"  >
-    
-    <div class="container">
-      <h1 class="text-center">Posters</h1>
-      <div class="row m2">
-        <div class="col-sm-6 col-md-6 m2">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/1.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Poster 1</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-
-              <button class="btn btn-primary" (click)="submitimage(1)" type="button">
-                Ver Mas
-              </button>
+    <section class="posters" [ngClass]="{'div-open': showpst, 'div-close': !showpst}" >
+        <form #posters="ngForm"  *ngIf="!number_success">
+        <div class="container">
+          <h1 class="text-center">Posters</h1>
+          <div class="row m2">
+            <div class="col-sm-6 col-md-6 m2">
+              <div class="thumbnail featured-product">
+                <a href="#">
+                  <img src="../../../assets/postersypendones/1.jpg" class="img-fluid imgs">
+                </a>
+                <div class="caption">
+                  <h3>Poster 1</h3>
+                  <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+            
+                      <button class="btn btn-primary" (click)="submitimage(1)"  type="button">
+                        Ver Mas
+                      </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="thumbnail featured-product">
+                <a href="#">
+                    <img src="../../../assets/postersypendones/2.jpg" class="img-fluid imgs">
+                </a>
+                <div class="caption">
+                  <h3>Poster 2</h3>
+                  <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+                  <button class="btn btn-primary" (click)="submitimage(2)" type="button">
+                      Ver mas
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+             <!-- Product 3 -->
+             <div class="col-sm-6 col-md-6">
+                <div class="thumbnail featured-product">
+                  <a href="">
+                    <img src="../../../assets/postersypendones/3.jpg" class="img-fluid imgs">
+                  </a>
+                  <div class="caption">
+                    <h3>Poster 3</h3>
+                    <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+                    <button class="btn btn-primary" (click)="submitimage(3)" type="button">
+                        Ver mas
+                      </button>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Product 4 -->
+              <div class="col-sm-6 col-md-6">
+                <div class="thumbnail featured-product">
+                  <a href="#">
+                      <img src="../../../assets/postersypendones/4.jpg" class="img-fluid imgs">
+                  </a>
+                  <div class="caption">
+                    <h3>Poster 4</h3>
+                    <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+            
+                        <button class="btn btn-primary" (click)="submitimage(4)" type="button">
+                        Ver mas
+                        </button>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </form>
+      </section>
+    <section class="pendones" [ngClass]="{'div-open': !showpst , 'div-close': showpst}">
+        <form #pendones="ngForm"  *ngIf="!number_success">
+      <div class="container">
+        <h1 class="text-center">Pendones</h1>
+        <div class="row m2">
+          <!-- Product 1 -->
+          <div class="col-sm-6 col-md-6">
+            <div class="thumbnail featured-product">
+              <a href="#">
+                  <img src="../../../assets/postersypendones/5.jpg" class="img-fluid imgs">
+              </a>
+              <div class="caption">
+                <h3>Pendon 1</h3>
+                <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+          
+                    <button class="btn btn-primary" (click)="submitimage(5)" type="button" >
+                      Ver Mas
+                    </button>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Product 2 -->
+          <div class="col-sm-6 col-md-6">
+            <div class="thumbnail featured-product">
+              <a href="#">
+                  <img src="../../../assets/postersypendones/6.jpg" class="img-fluid imgs">
+              </a>
+              <div class="caption">
+                <h3>Pendon 2</h3>
+                <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+                <button class="btn btn-primary" (click)="submitimage(6)" type="button">
+                    Ver mas
+                  </button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/2.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Poster 2</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-              <button class="btn btn-primary" (click)="submitimage(2)" type="button">
-                Ver mas
-              </button>
+        <div class="row">
+           <!-- Product 3 -->
+           <div class="col-sm-6 col-md-6">
+              <div class="thumbnail featured-product">
+                <a href="#">
+                    <img src="../../../assets/postersypendones/7.jpg" class="img-fluid imgs">
+                </a>
+                <div class="caption">
+                  <h3>Pendon 3</h3>
+                  <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+                  <button class="btn btn-primary" (click)="submitimage(7)"type="button">
+                      Ver mas
+                    </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row ">
-        <!-- Product 3 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="">
-              <img src="../../../assets/postersypendones/3.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Poster 3</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-              <button class="btn btn-primary" (click)="submitimage(3)" type="button">
-                Ver mas
-              </button>
+        
+            <!-- Product 4 -->
+            <div class="col-sm-6 col-md-6">
+              <div class="thumbnail featured-product">
+                <a href="#">
+                    <img src="../../../assets/postersypendones/8.jpg" class="img-fluid imgs">
+                </a>
+                <div class="caption">
+                  <h3>Pendon 4</h3>
+                  <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+          
+                      <button class="btn btn-primary" (click)="submitimage(8)" type="button">
+                      Ver mas
+                      </button>
+                  
+                </div>
+              </div>
             </div>
-          </div>
         </div>
-
-        <!-- Product 4 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/4.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Poster 4</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-
-              <button class="btn btn-primary" (click)="submitimage(4)" type="button">
-                Ver mas
-              </button>
-
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
-  </section>
-  <section class="pendones" [ngClass]="{'div-open': !showpst , 'div-close': showpst}">
-    <div class="container">
-      <h1 class="text-center">Pendones</h1>
-      <div class="row m2">
-        <!-- Product 1 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/5.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Pendon 1</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-
-              <button class="btn btn-primary" (click)="submitimage(5)" type="button">
-                Ver Mas
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/6.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Pendon 2</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-              <button class="btn btn-primary" (click)="submitimage(6)" type="button">
-                Ver mas
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Product 3 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/7.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Pendon 3</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-              <button class="btn btn-primary" (click)="submitimage(1)" type="button">
-                Ver mas
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail featured-product">
-            <a href="#">
-              <img src="../../../assets/postersypendones/8.jpg" class="img-fluid imgs">
-            </a>
-            <div class="caption">
-              <h3>Pendon 4</h3>
-              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea
-                prairie turnip leek lentil turnip greens parsnip.</p>
-
-              <button class="btn btn-primary" (click)="submitimage(7)" type="button">
-                Ver mas
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.container -->
-
-  </section>
+        </form>
+    </section>
 </div>

@@ -30,8 +30,11 @@ export class PostersComponent implements OnInit {
       this.showindex = index;
     }
   }
+  refresh(): void {
+    window.location.reload();
+}
   submitimage(number: number) {
-      const url = '/api/vr-poster/'+number;
+      const url = '/api/visual-recognition/poster/'+number;
       this.numbermodal=number;
       console.log(this.numbermodal);
 			this.observableService.createService(url, {})
@@ -42,5 +45,6 @@ export class PostersComponent implements OnInit {
 				},
 					error => { }
 				);
-		} 
+    } 
+   
 }
