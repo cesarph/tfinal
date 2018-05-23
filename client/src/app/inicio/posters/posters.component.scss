@@ -48,14 +48,13 @@ h3,
 }
 
 .item-1 {
-	background: url('../../../assets/Personal/maxresdefault.jpg');
+	background: url('../../../assets/pendones/maxresdefault.jpg');
 	}
 	
 .item-2 {
-    background: url('../../../assets/Personal/maxresdefault.jpg');
+    background: url('../../../assets/pendones/headerhome.jpg');
 	}
-	
-	
+		
 .item-1,
 .item-2,{
 	background-size: cover;
@@ -64,7 +63,7 @@ h3,
 
 .featured-product > img,
 .featured-product > a > img {
-	height: 150px;
+	height: 350px;
 }
 
 .featured-product h3 {
@@ -83,3 +82,12 @@ h3,
 	}
 
 
+.resultados{
+	background-color: #FF7500;
+	color: black;
+	padding: 50px 0;
+	h2,p{
+		text-align: center;
+	}
+	
+}

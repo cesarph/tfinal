@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <header>
+    <div class="row">
+      <div class="col-md-12 text-center pt-5">
+        <div class="hed">
+          <p>Texto a Voz</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="texto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <form #pregunta="ngForm" (ngSubmit)="submitTexttoForm(pregunta)" *ngIf="!form_success">
+                <div class="form-group text-left">
+                    <label for="text">Ingresa el texto que quieras escuchar, esto en apoyo a personas con capacidades diferentes.
+                    </label>
+                    <textarea rows="10" type="text" class="form-control" id="text" [(ngModel)]="texttoau.text" name="text" #content="ngModel">
+                      </textarea>
+                  </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-outline-primary butt">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="audio">
+    <audio controls>
+      <source src="../../../assets/audio.wav" type="audio/ogg">
+    Your browser does not support the audio element.
+    </audio>
+  </section>
+</div>

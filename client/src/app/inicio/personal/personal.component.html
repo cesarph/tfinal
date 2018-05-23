@@ -8,7 +8,7 @@
       </div>
     </div>
   </header>
-  <section class="instrucciones container" >
+  <section class="instrucciones container" [ngClass]="{'showans': !form_success, 'hidden': form_success}">
     <div class="row">
       <div class="col-md-12">
         <p>
@@ -30,7 +30,7 @@
     </div>
 
   </section>
-  <section class="preguntas" >
+  <section class="preguntas" [ngClass]="{'showans': !form_success, 'hidden': form_success}">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -63,28 +63,55 @@
     </div>
     
   </section>
+  <section class="instrucciones container" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          Resultados de tu información, esto es un aproximado a lo que te gusta o puede gustar segun el escrito enviado.
+        </p>
+       
+      </div>
+    </div>
+
+  </section>
   <section class="resultado" [ngClass]="{'showans': form_success, 'hidden': !form_success}">
-    Personality
+    <div class="container">
+   <div class="row">
+     <div class="col-4 col-md-4">
+   <h4>Personalidad:</h4> 
     <div *ngFor="let pers of personality;">
-      <strong>{{ pers.name }} - {{ pers.percentile }}:</strong>
+      <strong>{{ pers.name }} - {{ pers.percentile }}:</strong><br>
       <span *ngFor="let res of pers.children;">
-          {{ res.name }} - {{ res.percentile }},
+          {{ res.name }} - {{ res.percentile }}%,
       </span>
     </div>
-    Needs
-    <div *ngFor="let need of needs;">
-        <strong>{{ need.name }}</strong> - {{ need.percentile }}
+  </div>
+    <div class="col-md-4 col-4">
+      <h4>Needs</h4>
+      <div *ngFor="let need of needs;">
+          <strong>{{ need.name }}</strong> - {{ need.percentile }}%
+      </div>
     </div>
-    Values
+   <div class="col-md-4 col-4">
+    <h4>Values</h4>
     <div *ngFor="let value of values;">
-        <strong>{{ value.name }}</strong> - {{ value.percentile }}
+        <strong>{{ value.name }}</strong> - {{ value.percentile }}%
     </div>
-    Consumption Preferences
-    <div *ngFor="let consumption of consumptions;">
+   </div>
+   <div class="col-12 col-md-12">
+    <h2 class="text-center">
+    Preferencias de consumo</h2>
+    <div class="row">
+    <div  class="col-md-4" *ngFor="let consumption of consumptions;">
         <strong>{{ consumption.name }}: </strong>
         <ul *ngFor="let preference of consumption.consumption_preferences;">
-            <li>{{ preference.name }} - {{ preference.score }}</li>
+            <li>{{ preference.name }} </li>
         </ul>
+    
       </div>
+    </div>
+   </div>
+   </div>
+  </div>
   </section>
 </div>

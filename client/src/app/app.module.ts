@@ -10,6 +10,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ModalModule } from 'ngx-modal';
+import { ImageUploadModule } from "angular2-image-upload";
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -18,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PersonalComponent } from './inicio/personal/personal.component';
 import { PostersComponent } from './inicio/posters/posters.component';
 import { AreasComponent } from './inicio/areas/areas.component';
-import { AppobservableService } from './services/appobservable.service'
+import { AppobservableService } from './services/appobservable.service';
+import { TextToAudioComponent } from './inicio/text-to-audio/text-to-audio.component'
 
 @Injectable()
 export class NoopInterceptor implements HttpInterceptor {
@@ -36,13 +39,16 @@ export class NoopInterceptor implements HttpInterceptor {
     FooterComponent,
     PersonalComponent,
     PostersComponent,
-    AreasComponent
+    AreasComponent,
+    TextToAudioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     SimpleNotificationsModule.forRoot(),
+    ImageUploadModule.forRoot(),
+    ModalModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
