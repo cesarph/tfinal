@@ -77,7 +77,7 @@ router.post('/food', (req, res) => {
                 objects = (objects.length) ? objects : ["No es un area de comida"];
 
                 res.json({ objects });
-            });
+            });w
 
 
 
