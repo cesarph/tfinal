@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import {PersonalComponent} from './inicio/personal/personal.component';
 import {PostersComponent} from './inicio/posters/posters.component';
-import {TextToAudioComponent} from './inicio/text-to-audio/text-to-audio.component';
+import {TranslatorComponent} from './inicio/translator/translator.component';
 import { AreasComponent } from './inicio/areas/areas.component';
 import { ChatbotComponent } from './inicio/chatbot/chatbot.component';
 
@@ -27,9 +27,9 @@ export const appRoutes: Routes = [
     data: { title: 'AreasComida' }
   },
   {
-    path: 'text-to-audio',
-    component: TextToAudioComponent,
-    data: { title: 'TextAudio' }
+    path: 'translator',
+    component: TranslatorComponent,
+    data: { title: 'Traductor' }
   },
   {
     path: 'personal',
