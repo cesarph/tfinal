@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppobservableService } from '../../services/appobservable.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-posters',
@@ -8,13 +9,18 @@ import { AppobservableService } from '../../services/appobservable.service';
 })
 export class PostersComponent implements OnInit {
   public showindex = 0;
-  public number_success;
+  public number_success=null;
+  public people = null;
+  public objects = null;
+  public numbermodal=0;
   constructor(private observableService: AppobservableService) { 
 
   }
  
 
-  ngOnInit() {
+  ngOnInit(
+    
+  ) {
   }
   updateShow(index): void {
     if (this.showindex == index) {
@@ -25,13 +31,14 @@ export class PostersComponent implements OnInit {
     }
   }
   submitimage(number: number) {
-	
-			console.log('valid');
-      const url = '/api/vr-poster/:id';
-			this.observableService.createService(url, number)
+      const url = '/api/vr-poster/'+number;
+      this.numbermodal=number;
+      console.log(this.numbermodal);
+			this.observableService.createService(url, {})
 				.subscribe(result => {
           this.number_success = result;
-          
+          this.people = result.people;
+          this.objects = result.objects; 
 				},
 					error => { }
 				);

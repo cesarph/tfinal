@@ -7,6 +7,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import {PersonalComponent} from './inicio/personal/personal.component';
 import {PostersComponent} from './inicio/posters/posters.component';
 import {TextToAudioComponent} from './inicio/text-to-audio/text-to-audio.component';
+import { AreasComponent } from './inicio/areas/areas.component';
 
 
 
@@ -17,6 +18,12 @@ export const appRoutes: Routes = [
     path: '', 
     component: InicioComponent,
     pathMatch: 'full',
+  },
+  
+  {
+    path: 'areas',
+    component: AreasComponent,
+    data: { title: 'AreasComida' }
   },
   {
     path: 'text-to-audio',
