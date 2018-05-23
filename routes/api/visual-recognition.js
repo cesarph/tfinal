@@ -60,7 +60,9 @@ router.post('/food', (req, res) => {
     visualRecognition.classify(params, (err, watsonResp) => {
         if (err) return console.log(err);
         
-        res.json(watsonResp);
+        const objects = watsonResp["images"][0]["classifiers"][0]["classes"].map(object => object.class);
+
+        res.json({ objects });
     });
 
     
