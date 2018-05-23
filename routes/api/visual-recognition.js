@@ -1,5 +1,6 @@
 const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3'),
       fs = require('fs'),
+      download = require('image-downloader'),
       router = require('express').Router();
 
 
@@ -7,6 +8,8 @@ const visualRecognition = new VisualRecognitionV3({
   api_key: process.env.VISUAL_RECOGNITION_API_KEY,
   version: '2018-03-19'
 });
+
+
 
 router.post('/poster/:id', async (req, res) => {
     const result = { id: req.params.id };
@@ -50,21 +53,42 @@ router.post('/poster/:id', async (req, res) => {
 });
 
 router.post('/food', (req, res) => {
-    const params = {
-        images_file: fs.createReadStream('prueba.jpg'),
-        accept_language: 'es',
-        classifier_ids: ["Areasdecomida_768439822"]
-      };
 
+    const options = {
+        url: req.body.url,
+        dest: './Uploads/photo.jpg'
+    }
+       
+    async function downloadIMG() {
+        try {
+            const { filename, image } = await download.image(options)
 
-    visualRecognition.classify(params, (err, watsonResp) => {
-        if (err) return console.log(err);
+            const params = {
+                images_file: fs.createReadStream(`${filename}`),
+                accept_language: 'es',
+                classifier_ids: ["Areasdecomida_768439822"]
+            };
         
-        const objects = watsonResp["images"][0]["classifiers"][0]["classes"].map(object => object.class);
+            visualRecognition.classify(params, (err, watsonResp) => {
+                if (err) return console.log(err);
+                
+                let objects = watsonResp["images"][0]["classifiers"][0]["classes"].map(object => object.class);
+                console.log(objects);
+                objects = (objects.length) ? objects : ["No es un area de comida"];
 
-        res.json({ objects });
-    });
+                res.json({ objects });
+            });
 
+
+
+        } catch (e) {
+            throw e
+        }
+    }
+    
+    downloadIMG()
+
+    
     
 });
 

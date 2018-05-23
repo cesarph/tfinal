@@ -9,47 +9,33 @@ import { ImageUploadModule } from "angular2-image-upload";
   styleUrls: ['./areas.component.scss']
 })
 export class AreasComponent implements OnInit {
-  filesToUpload: Array<File>;
-
+    public form_success = false;
+    public objects = null;
+    public areas = {
+        "url": null
+    };
 
   constructor(private observableService: AppobservableService) { }
 
+    ngOnInit() {
+    }
 
-  ngOnInit() {
-  }
+    submitImage(form: any) {
+        if (form.valid) {
+            console.log('valid');
+            const url = '/api/visual-recognition/food';
 
-  upload() {
-    this.makeFileRequest("/api/visual-recognition/food", [], this.filesToUpload).then((result) => {
-        console.log(result);
-    }, (error) => {
-        console.error(error);
-    });
-}
-
-fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>> fileInput.target.files;
-}
-
-makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
-    return new Promise((resolve, reject) => {
-        var formData: any = new FormData();
-        var xhr = new XMLHttpRequest();
-        for(var i = 0; i < files.length; i++) {
-            formData.append("uploads[]", files[i], files[i].name);
+            this.observableService.createService(url, this.areas)
+                .subscribe(result => {
+                    this.form_success = result;
+                    this.objects = result.objects;
+                    console.log(result);
+                },
+                    error => { }
+                );
+        } else {
+            console.log('invalid');
         }
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    resolve(JSON.parse(xhr.response));
-                } else {
-                    reject(xhr.response);
-                }
-            }
-        }
-        xhr.open("POST", url, true);
-        xhr.send(formData);
-    });
-}
 
- 
+    }
 }
