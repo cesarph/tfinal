@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppobservableService } from '../../services/appobservable.service';
 
@@ -13,7 +13,7 @@ export class ChatbotComponent implements OnInit {
   public form_success = false;
   public initialMessage = "";
   public messages = [];
-
+  @Input() chatbot: string;
   public question = 
   {
       "message": null,  

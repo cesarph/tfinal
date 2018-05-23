@@ -111,20 +111,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-8 offset-md-3  ">
+      <div class="col-12 col-md-8 offset-md-2  ">
         <h2 class="margin-top-20 ">
           Preferencias de consumo</h2>
         <div class="row">
           <div class="col-md-12 personhov" *ngFor="let consumption of consumptions;">
             <h4 class="margin-top-20">{{ consumption.name }}: </h4>
             <div *ngFor="let preference of consumption.consumption_preferences;">
-              {{ preference.name }}
+             <p class="prefcon">{{ preference.name }}</p> 
           </div>
 
           </div>
         </div>
       </div>
     </div>
-
+    <div class="container">
+        <button class="btn btn-primary margin-top-20 mrgn-btn-50" (click)="refresh()">Atras</button>
+    </div>
+    
   </section>
 </div>
